@@ -41,9 +41,9 @@ def compute_normal_histograms(normal_cloud):
         norm_y_vals.append(norm_component[1])
         norm_z_vals.append(norm_component[2])
 
-    hist1 = np.histogram(norm_x_vals, bins=32, range=(0, 256))
-    hist2 = np.histogram(norm_y_vals, bins=32, range=(0, 256))
-    hist3 = np.histogram(norm_z_vals, bins=32, range=(0, 256))
+    S1_hist = np.histogram(norm_x_vals, bins=32, range=(-1, 1))
+    S2_hist = np.histogram(norm_y_vals, bins=32, range=(-1, 1))
+    S3_hist = np.histogram(norm_z_vals, bins=32, range=(-1, 1))
 
     hist_features = np.concatenate((S1_hist[0], S2_hist[0], S3_hist[0])).astype(np.float64)
     normed_features = hist_features / np.sum(hist_features)
